@@ -1,3 +1,9 @@
+In Go 1.8 there's a better built in, see https://talks.golang.org/2017/state-of-go.slide#15
+
+```
+go tool fix -diff -force=context state-of-go/tools/gofix.go
+```
+
 # Introduction
 
 Go 1.7 brought introduced the `context` package, which can be used instead of `golang.org/x/net/context`.
