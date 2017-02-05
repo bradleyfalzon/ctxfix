@@ -77,7 +77,7 @@ func homeHandler(ctx context.Context, w http.ResponseWriter, r *http.Request) (i
 
 `ctxfix` will adjust the import and `homeHandler` signature and body correctly, as seen in `testdata/ctxfix.go`:
 
-```
+```diff
 -func homeHandler(ctx context.Context, w http.ResponseWriter, r *http.Request) (int, error) {
 -       fmt.Fprint(w, "Hello: ", ctx.Value("ua"))
 +func homeHandler(w http.ResponseWriter, r *http.Request) (int, error) {
@@ -86,7 +86,7 @@ func homeHandler(ctx context.Context, w http.ResponseWriter, r *http.Request) (i
 
 But you are expected to rewrite the `httpHandler` signature and `ServeHTTP` method:
 
-```
+```diff
 -type httpHandler func(context.Context, http.ResponseWriter, *http.Request) (int, error)
 +type httpHandler func(http.ResponseWriter, *http.Request) (int, error)
 
